@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'tdserver.urls'
@@ -122,7 +122,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
-
+CORS_ALLOW_ALL_ORIGINS = True
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
