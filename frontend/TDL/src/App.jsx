@@ -1,6 +1,6 @@
-import axios from 'axios'
 import React from "react";
 import Register from "./Register.jsx";
+import "./App.css"
 
 
 class App extends React.Component{
@@ -9,26 +9,31 @@ class App extends React.Component{
     super(props);
     // Initialize state
     this.state = {
-      currentPage: 'Register'
+      currentPage: 'Login'
     };
   }
 
   // Method to update the current page
   gotoPage = (page) => {
+
     this.setState({ currentPage: page });
   };
 
   render() {
     return (
-      <div>
-        <nav>
-          <button onClick={() => this.gotoPage('Register')}>Home</button>
-          <button onClick={() => this.gotoPage('Login')}>About</button>
-        </nav>
+      <>
 
-        {this.state.currentPage === 'home' && <Register />}
-        {this.state.currentPage === 'about' && <Login />}
-      </div>
+         <div className="mainDiv">
+
+          <button onClick={() => this.gotoPage('Landing')}>Landing</button>
+         </div>
+          <button onClick={() => this.gotoPage('Register')}>Register</button>
+
+
+        {this.state.currentPage === 'Register' && <Register />}
+
+
+      </>
     );
   }
 
