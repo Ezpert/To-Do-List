@@ -9,6 +9,9 @@ urlpatterns =[
     path('register/', views.UserRegistrationView.as_view(), name='user-register'),
     path('users/', views.UserList.as_view(), name='user-list'),
     path('users/<int:pk>', views.UserDetails.as_view(), name='user-details'),
+    #sign in path
+    path('signin/', views.SignInView.as_view(), name='signin'),
+
 
 
 
