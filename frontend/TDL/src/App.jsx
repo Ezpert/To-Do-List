@@ -1,90 +1,42 @@
 import axios from 'axios'
 import React from "react";
+import Register from "./Register.jsx";
 
 
 class App extends React.Component{
 
-    state = {
-        details: [],
-        postFormData: {},
-        postResponse: null
-    }
+    constructor(props) {
+    super(props);
+    // Initialize state
+    this.state = {
+      currentPage: 'Register'
+    };
+  }
 
+  // Method to update the current page
+  gotoPage = (page) => {
+    this.setState({ currentPage: page });
+  };
 
-    componentDidMount() {
-        let data;
-        axios.get("http://localhost:8000/register/").then(res =>{
-            data = res.data;
-            this.setState({
-                details:data
-            });
-        })
-            .catch(err => {return "Bye!"})
-    }
+  render() {
+    return (
+      <div>
+        <nav>
+          <button onClick={() => this.gotoPage('Register')}>Home</button>
+          <button onClick={() => this.gotoPage('Login')}>About</button>
+        </nav>
 
-    handleFormSubmit = (e) => {
-        e.preventDefault()
-        axios.post("http://localhost:8000/register/", this.state.postFormData).then(res => {
-            console.log(res.data);
-            this.setState({
-                postResponse: res.data,
-                postFormData: {}
-            });
-
-        })
-            .catch(err => console.error("Error", err));
-    }
-
-    updateData = (newData) => {
-        this.setState(prevState =>({
-            postFormData: {...prevState.postFormData, ...newData}
-        }))
-
-    }
+        {this.state.currentPage === 'home' && <Register />}
+        {this.state.currentPage === 'about' && <Login />}
+      </div>
+    );
+  }
 
 
 
-    render(){
-        return(
-            <div>
-                <header>Data Generated From Django</header>
-                {this.state.details.map((output, id) => (
-                    <div key={id}>
-                        <h1>{output && output.username ? output.username : 'Username not available'}</h1>
-                    </div>
-                ))}
-                <form onSubmit={this.handleFormSubmit}>
-                    <input
-                        type = "text"
-                        placeholder = "Username"
-                        value={this.state.postFormData.username || ''}
-                        onChange={(e) => this.updateData({username: e.target.value})}
-                    />
-                    <input
-                        type = "password"
-                        placeholder= "Password"
-                        value = {this.state.postFormData.password || ''}
-                        onChange={(e) => this.updateData({password: e.target.value})}
-                    />
-                    <button type="submit">Submit</button>
-
-                </form>
-                {this.state.details.map((output, id) => (
-                    <div key={id}>
-                        <h1>{output.username}</h1>
-
-                    </div>
-
-                ))}
-
-                {this.state.postResponse && (
-                    <p>POST Response: {JSON.stringify(this.state.postResponse)}</p>
-                )}
-            </div>
 
 
-        )
-    }
+
 }
 
 

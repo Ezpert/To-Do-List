@@ -1,9 +1,11 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework import permissions
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from tdlogic.models import ToDoModel
 from tdlogic.serializers import ToDoSerializer, UserSerializer, UserRegistrationSerializer
@@ -82,3 +84,23 @@ class UserRegistrationView(generics.CreateAPIView):
         headers = self.get_success_headers(serializer.data)
         return Response({"message": "User created successfully", "username": serializer.data['username']},
                         status=status.HTTP_201_CREATED, headers=headers)
+
+
+#Creating the sign in page
+class SignInView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        # Extract username and password from request data
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        # Authenticate user
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # Login the user
+            login(request, user)
+            return Response({"message": "Login successful", "username": user.username}, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
