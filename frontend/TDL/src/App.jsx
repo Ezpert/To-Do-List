@@ -1,48 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Register from "./Register.jsx";
-import "./App.css"
+import "./App.css";
 
+function App() {
+  // Initialize state using useState hook
+  const [currentPage, setCurrentPage] = useState('Login');
+  const [isRegisterButtonVisible, setIsRegisterButtonVisible] = useState(true);
 
-class App extends React.Component{
-
-    constructor(props) {
-    super(props);
-    // Initialize state
-    this.state = {
-      currentPage: 'Login'
-    };
-  }
-
-  // Method to update the current page
-  gotoPage = (page) => {
-
-    this.setState({ currentPage: page });
+  // Function to update the current page
+  const gotoPage = (page) => {
+    setCurrentPage(page);
   };
 
-  render() {
-    return (
-      <>
+  // Function to handle Register button click
+  const handleRegisterClick = () => {
+    gotoPage('Register');
+    setIsRegisterButtonVisible(false);
+  };
 
-         <div className="mainDiv">
-
-          <button onClick={() => this.gotoPage('Landing')}>Landing</button>
-         </div>
-          <button onClick={() => this.gotoPage('Register')}>Register</button>
-
-
-        {this.state.currentPage === 'Register' && <Register />}
-
-
-      </>
-    );
-  }
-
-
-
-
-
-
+  return (
+    <>
+      <div className="mainDiv">
+        <button onClick={() => gotoPage('Landing')}>Back</button>
+      </div>
+      {isRegisterButtonVisible && (
+        <button onClick={handleRegisterClick}>Register</button>
+      )}
+      {currentPage === 'Register' && <Register />}
+    </>
+  );
 }
-
 
 export default App;

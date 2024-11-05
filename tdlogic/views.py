@@ -68,14 +68,9 @@ class UserDetails(generics.RetrieveUpdateDestroyAPIView):
 
 
 class UserRegistrationView(generics.CreateAPIView):
-    queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
 
-    def get(self, request, *args, **kwargs):
-        users = self.get_queryset()
-        serializer = self.get_serializer(users, many=True)
-        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

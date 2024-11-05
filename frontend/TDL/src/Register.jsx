@@ -1,108 +1,78 @@
-import axios from 'axios'
+import axios from 'axios';
 import React from "react";
+import { useEffect, useState } from "react";
 
+// Changed to functional component
+function Register() {
+    // State declarations using hooks
+    const [details, setDetails] = useState([]);
+    const [postFormData, setPostFormData] = useState({});
+    const [postResponse, setPostResponse] = useState(null);
 
-class Register extends React.Component{
-
-    state = {
-        details: [],
-        postFormData: {},
-        postResponse: null
-    }
-
-
-    componentDidMount() {
-        let data;
-        axios.get("http://localhost:8000/register/").then(res =>{
-            data = res.data;
-            this.setState({
-                details:data
-            });
-        })
-            .catch(err => {return "Bye!"})
-    }
-
-   //Make a button to go back to the sign in page
-    goToMain(){
-        axios.get("http://localhost:8000/signin/").then(response =>{
-            console.log(response.data)
-        })
-            .catch(error => {
-                console.error('Error:', error)
+    // useEffect replaces componentDidMount
+    useEffect(() => {
+        axios.get("http://localhost:8000/register/")
+            .then(res => {
+                setDetails(res.data);
             })
-    }
+            .catch(err => console.log("Error:", err));
+    }, []); // Empty dependency array means this runs once on mount
 
-
-
-    handleFormSubmit = (e) => {
-        e.preventDefault()
-        axios.post("http://localhost:8000/register/", this.state.postFormData).then(res => {
-            console.log(res.data);
-            this.setState({
-                postResponse: res.data,
-                postFormData: {}
+    // Function to navigate to sign in page
+    const goToMain = () => {
+        axios.get("http://localhost:8000/signin/")
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
+    };
 
-        })
+    // Handle form submission
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:8000/register/", postFormData)
+            .then(res => {
+                console.log(res.data);
+                setPostResponse(res.data);
+                setPostFormData({});
+            })
             .catch(err => console.error("Error", err));
-    }
+    };
 
-    updateData = (newData) => {
-        this.setState(prevState =>({
-            postFormData: {...prevState.postFormData, ...newData}
-        }))
+    // Update form data
+    const updateData = (newData) => {
+        setPostFormData(prevData => ({
+            ...prevData,
+            ...newData
+        }));
+    };
 
-    }
+    return (
+        <div>
+            {postResponse && (
+                <p>POST Response: {JSON.stringify(postResponse)}</p>
+            )}
+            <p>Sign Up</p>
 
-    render(){
-        return(
-            <div>
-                <form onSubmit={this.goToMain}>
-                    <button type="submit">Submit</button>
-
-                </form>
-                <header>Data Generated From Django</header>
-                {this.state.details.map((output, id) => (
-                    <div key={id}>
-                        <h1>{output && output.username ? output.username : 'Username not available'}</h1>
-                    </div>
-                ))}
-                <form onSubmit={this.handleFormSubmit}>
-                    <input
-                        type = "text"
-                        placeholder = "Username"
-                        value={this.state.postFormData.username || ''}
-                        onChange={(e) => this.updateData({username: e.target.value})}
-                    />
-                    <input
-                        type = "password"
-                        placeholder= "Password"
-                        value = {this.state.postFormData.password || ''}
-                        onChange={(e) => this.updateData({password: e.target.value})}
-                    />
-                    <button type="submit">Submit</button>
-
-                </form>
-                {this.state.details.map((output, id) => (
-                    <div key={id}>
-                        <h1>{output.username}</h1>
-
-                    </div>
-
-                ))}
-
-                {this.state.postResponse && (
-                    <p>POST Response: {JSON.stringify(this.state.postResponse)}</p>
-                )}
-                <p>funciona?</p>
-            </div>
-
-
-        )
-    }
-
-
+            <form onSubmit={handleFormSubmit}>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={postFormData.username || ''}
+                    onChange={(e) => updateData({username: e.target.value})}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={postFormData.password || ''}
+                    onChange={(e) => updateData({password: e.target.value})}
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
 }
 
-
-export default Register
+export default Register;
