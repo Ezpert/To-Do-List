@@ -40,7 +40,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
