@@ -37,7 +37,7 @@ function Register(props) {
     };
 
     return (
-        <div>
+        <>
 
             {postResponse && (
                 <p>POST Response: {JSON.stringify(postResponse)}</p>
