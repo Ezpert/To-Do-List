@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tdlogic',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 
 ]
 
@@ -49,9 +50,11 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 
 }
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'tdserver.urls'
@@ -111,9 +115,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# White listing the localhost:3000 port
+# for React
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
-
+CORS_ALLOW_ALL_ORIGINS = True
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
