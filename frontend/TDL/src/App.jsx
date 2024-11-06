@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Register from "./Register.jsx";
 import "./App.css";
 
@@ -34,10 +34,14 @@ function App() {
         </button>
       )}
 
+
       {/* Landing page with login form */}
       {currentPage === 'Landing' && (
         <div className="loginContainer">
+
           <h2>Login</h2>
+
+
           <form onSubmit={(e) => handleLogin(e)}>  {/* Corrected syntax here */}
             <div className="inputGroup">
               <input
@@ -68,7 +72,7 @@ function App() {
       )}
 
       {/* Register component */}
-      {currentPage === 'Register' && <Register />}
+      {currentPage === 'Register' && <Register setPage = {setCurrentPage} changeVisibility = {setIsRegisterButtonVisible} />}
     </div>
   );
 }
