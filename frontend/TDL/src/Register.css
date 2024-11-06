@@ -1,0 +1,50 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  /* Adds space between elements */
+    max-width: 300px;  /* Optional: limits form width */
+
+}
+
+#username-div,#password-div{
+    position:relative;
+}
+.label-username,
+.label-password{
+    position:absolute;
+    font-size: 10px;
+    top: 5px;
+    left: 11px;
+}
+
+.password-toggle{
+    position:absolute;
+    background: none;
+    top: 10px;
+    right: -25.5px;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+.password-toggle:hover{
+    background: none;
+}
+
+.password-toggle:focus{
+    outline: none;
+    border: none;
+}
+
+
+.register-username,
+.register-password{
+    background: none;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    width: 100%;
+
+    padding: 25px 0px 5px 10px;
+
+
+}
