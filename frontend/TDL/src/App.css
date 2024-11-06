@@ -48,6 +48,12 @@ form {
   max-width: 300px;
 }
 
+.landingButton{
+  background: none;
+}
+.landingButton:hover{
+  background:none;
+}
 
 .mainDiv{
   padding: 20px 20px 20px 20px;

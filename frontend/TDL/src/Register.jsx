@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios    from 'axios';
 import { useState } from "react";
 import './Register.css'
 import PropTypes from "prop-types";
@@ -35,6 +35,7 @@ function Register(props) {
 
     return (
         <div>
+
             {postResponse && (
                 <p>POST Response: {JSON.stringify(postResponse)}</p>
             )}
