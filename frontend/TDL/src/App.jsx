@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Register from "./Register.jsx";
+import Header from "./header.jsx";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <button onClick={handleRegisterClick}>Register</button>
       )}
       {currentPage === 'Register' && <Register />}
+      <Header />
     </>
   );
 }
