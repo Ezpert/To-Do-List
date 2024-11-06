@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import { useEffect, useState } from "react";
+import './Register.css'
 
 // Changed to functional component
 function Register() {
@@ -54,10 +55,11 @@ function Register() {
             {postResponse && (
                 <p>POST Response: {JSON.stringify(postResponse)}</p>
             )}
-            <p>Sign Up</p>
+            <p className="title">Sign Up</p>
 
             <form onSubmit={handleFormSubmit}>
                 <input
+
                     type="text"
                     placeholder="Username"
                     value={postFormData.username || ''}
