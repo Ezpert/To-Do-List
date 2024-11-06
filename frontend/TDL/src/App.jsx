@@ -27,32 +27,47 @@ function App() {
 
   return (
     <div className={"mainDiv"}>
-    {/* Only show back button when not on main page  */}
+      {/* Back button */}
       {currentPage !== 'Landing' && (
-          <button onClick={() => handleRegisterClick('Landing')}>
-            Back to Main Page
-          </button>
+        <button onClick={() => handleRegisterClick('Landing')}>
+          Back to Main Page
+        </button>
       )}
 
-      {/* Landing on page with the log in logic */}
+      {/* Landing page with login form */}
       {currentPage === 'Landing' && (
-          <div className ="loginContainer">
-            <h2>Login</h2>
-            <form onSubmit{handleLogin}>
-              <div className="inputGroup">
+        <div className="loginContainer">
+          <h2>Login</h2>
+          <form onSubmit={(e) => handleLogin(e)}>  {/* Corrected syntax here */}
+            <div className="inputGroup">
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="inputGroup">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit">Login</button>
+          </form>
 
-              </div>
-            </form>
+          {/* Register button */}
+          {isRegisterButtonVisible && (
+            <button onClick={() => handleRegisterClick('Register')}>
+              Register
+            </button>
+          )}
+        </div>
       )}
 
-      {/* Logic of register button */}
-      {isRegisterButtonVisible && (
-          <button onClick={()=> handleRegisterClick('Register')}>
-            Register
-          </button>
-      )}
-
-    {/* Transition to register page */}
+      {/* Register component */}
       {currentPage === 'Register' && <Register />}
     </div>
   );
