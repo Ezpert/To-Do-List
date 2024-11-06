@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import { useEffect, useState } from "react";
+import './Register.css'
 
 // Changed to functional component
 function Register() {
@@ -58,6 +59,7 @@ function Register() {
 
             <form onSubmit={handleFormSubmit}>
                 <input
+                    className = "Username"
                     type="text"
                     placeholder="Username"
                     value={postFormData.username || ''}
