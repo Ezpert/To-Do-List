@@ -40,12 +40,21 @@
         white-space: nowrap;
     }
     .p-2:hover {
-        background-color: rgb(229, 152, 102);
+        background-color: rgb(104, 112, 125);
         transform: scale(1.05);
         border-style: solid;
-        
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
         color: #fff; /* Change text color on hover */
     }
-
+    .p-2 svg {
+        width: 20px;  /* Set icon size */
+        height: 20px;
+        margin-right: 10px;  /* Space between the icon and text */
+        vertical-align: middle;  /* Ensures the icon aligns well with the text */
+    }
+    
+    /* Optional: Adjust the position of the icon more precisely */
+    .p-2 svg {
+        margin-top: -5px; /* Adjust this value to move the icon slightly up or down */
+    }
 }

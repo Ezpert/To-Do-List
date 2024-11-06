@@ -50,10 +50,12 @@ function Register() {
     };
 
     return (
-        <div>
+    
+        <>
             {postResponse && (
                 <p>POST Response: {JSON.stringify(postResponse)}</p>
             )}
+            
             <p>Sign Up</p>
 
             <form onSubmit={handleFormSubmit}>
@@ -71,7 +73,7 @@ function Register() {
                 />
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </>
     );
 }
 
