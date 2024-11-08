@@ -53,3 +53,17 @@ form {
   padding: 20px 20px 20px 20px;
 
 }
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error {
+  border-color: red;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+}
