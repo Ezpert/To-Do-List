@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Register from "./Register.jsx";
-import Header from "./header.jsx";
+import Header from "./Header.jsx";
 import "./App.css";
-import todoIcon from './assets/todoist.svg'
+import todoIcon from './assets/todoist.svg';
+
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   };
 
   return (
-    <div className={"mainDiv"}>
+    <div className="mainDiv">
       {/* Back button */}
       {currentPage !== 'Landing' && (
           <button className="landingButton"onClick={() => handleRegisterClick('Landing')}>
