@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Register from "./Register.jsx";
+import Header from "./header.jsx";
 import TaskPage from "./pageTask.jsx";
 import "./App.css";
+import todoIcon from './assets/todoist.svg'
+
 
 function App() {
   // State variables
@@ -61,9 +64,9 @@ function App() {
     <div className={"mainDiv"}>
       {/* Display "Back to Main Page" button when not on the Landing page */}
       {currentPage !== 'Landing' && (
-        <button onClick={() => handleRegisterClick('Landing')}>
-          Back to Main Page
-        </button>
+          <button className="landingButton"onClick={() => handleRegisterClick('Landing')}>
+              <img src={ todoIcon }  alt="Todoist Icon"/>
+          </button>
       )}
       {/* Display login form if current page is 'Landing' */}
       {currentPage === 'Landing' && (

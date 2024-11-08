@@ -1,0 +1,60 @@
+
+
+.main {
+    background-color: black;
+    margin-right: 48rem;
+}
+.container{
+    margin-left: 5rem;
+    margin-right: 42rem;
+    text-align: center;
+    background-color: black;
+}
+.head {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 30%;
+    color: white;
+}
+
+.flex-column {
+    display: flex;/* Make the container a flex container */
+    flex-direction: column;/* Arrange children in a horizontal row */
+    gap: 15px;
+    margin-top: 1rem;
+    margin-left: 10rem;
+    text-align: center;
+    
+    .p-2{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-radius: 12px;
+        border: none;
+        margin-left: 10%;
+        margin-right: 75%;
+        /*  margin-right: 80rem*/
+        margin-top: 0rem;
+        padding: 1.5%;
+        padding-left: 10%;
+        padding-right: 20%;
+        background-color: white;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        white-space: nowrap;
+    }
+    .p-2:hover {
+        background-color: rgb(104, 112, 125);
+        transform: scale(1.05);
+        border-style: solid;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        color: #fff; /* Change text color on hover */
+    }
+    .p-2 svg {
+        width: 20px;  /* Set icon size */
+        height: 20px;
+        margin-right: 10px;  /* Space between the icon and text */
+        vertical-align: middle;  /* Ensures the icon aligns well with the text */
+    }
+    
+    /* Optional: Adjust the position of the icon more precisely */
+    .p-2 svg {
+        margin-top: -5px; /* Adjust this value to move the icon slightly up or down */
+    }
+}

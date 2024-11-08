@@ -40,7 +40,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +48,12 @@ form {
   max-width: 300px;
 }
 
+.landingButton{
+  background: none;
+}
+.landingButton:hover{
+  background:none;
+}
 
 .mainDiv{
   padding: 20px 20px 20px 20px;
