@@ -35,6 +35,13 @@ function App() {
     return isValid; //returns whether the form is valid (password)
   };
 
+  //Function to handle register button click
+  const handleRegisterClick = (page) => {
+    setCurrentPage(page);
+    //hide register button when not on landing page
+    setIsRegisterButtonVisible(page === 'Landing')
+  };
+
   // Handle login submission
   const handleLogin = async (e) => {
     e.preventDefault(); //prevents default form submission behavior

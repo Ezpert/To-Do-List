@@ -90,6 +90,16 @@ class SignInView(APIView):
         username = request.data.get('username')
         password = request.data.get('password')
 
+        #Validate inputs
+        errors = {}
+        if not username:
+            errors['username'] = 'Username is required'
+        if not password:
+            errors['password'] = 'Password is required'
+
+        if errors:
+            return Response({'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
+
         # Authenticate user
         user = authenticate(request, username=username, password=password)
 
