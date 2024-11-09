@@ -28,7 +28,6 @@
 
 button {
   padding: 10px 20px;
-  background-color: rgb(65, 106, 176);
   color: white;
   border: none;
   border-radius: 4px;
@@ -37,7 +36,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #c3392c;
 }
 
 .login-form {
@@ -50,6 +49,7 @@ button:hover {
 
 .landingButton{
   background: none;
+  padding: 0;
 }
 .landingButton:hover{
   background:none;
@@ -57,6 +57,7 @@ button:hover {
 
 .mainDiv{
   padding: 20px 20px 20px 20px;
+  margin: 0 15% 0 15%;
 
 }
 

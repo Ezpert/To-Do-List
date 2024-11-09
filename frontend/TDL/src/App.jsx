@@ -114,7 +114,7 @@ function App() {
         </div>
       )}
       {/* Render Register component when current page is 'Register' */}
-      {currentPage === 'Register' && <Register />}
+      {currentPage === 'Register' && <Register setPage={setCurrentPage} changeVisibility={setIsRegisterButtonVisible}/>}
       {/* Render TaskPage component when current page is 'Tasks' */}
       {currentPage === 'Tasks' && <TaskPage username={username} />}
     </div>
