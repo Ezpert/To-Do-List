@@ -23,6 +23,9 @@ function App() {
     if (!username.trim()) { //checks if username is empty or only whitespace
       tempErrors.username = "Username is required"; //sets error message if username is invalid
       isValid = false;
+    } else if (!/^[A-Za-z0-9]+$/.test(username)){
+      tempErrors.username = "Username can contain only letters and numbers";
+      isValid = false;
     }
 
     //Now validate the password
@@ -33,7 +36,6 @@ function App() {
       tempErrors.password = "Password must be at least 6 characters"; //set error message if password is too short
       isValid = false;
     }
-
     setErrors(tempErrors); //updates the errors state with ant validation errors
     return isValid; //returns whether the form is valid (password)
   };
@@ -49,13 +51,33 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault(); //prevents default form submission behavior
 
+    //validate the form before proceeding with login
     if (validateForm()) { //Proceed if the login is valid which means user entered something
-      try {
-        // Here you would typically make an API call to your backend
-        // For now, we'll just simulate a successful login
-        setCurrentPage('Tasks');
-      } catch (error) { //catches and handles any errors might occur in login
-        setErrors({ submit: "Login failed. Please try again." }); //sets a submission error message
+      try{
+        //simulate API call to the login endpoint
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({username,password}),
+        });
+
+        // check if the response is OK
+        if (response.ok){
+          //Parse the response as JSON
+          const data = await response.json();
+          //If login is successful, navigate to the task page
+          setCurrentPage('Tasks')
+          // refresh app state or trigger re-render to reflect the logged-in state
+        }else{
+          //if response not okay, error
+          throw new Error('Login failed');
+        }
+      } catch(error){
+        console.error('Login failed:', error);
+        //set an error message in the state
+        setErrors({submit: "Login failed. Please try again."});
       }
     }
   };
