@@ -96,7 +96,7 @@ function Register(props) {
                         }}
                         className="anchor-text-login"
                     >
-                        Go to Login
+                        Go to login
                     </a>
                     </div>
                 </div>

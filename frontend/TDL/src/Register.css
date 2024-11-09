@@ -83,6 +83,7 @@
     padding: 30px 10px 10px 10px; /* Changed padding to be more specific */
     box-sizing: border-box; /* This is the key addition */
     font-size: 100%;
+    color: black;
 
 
 

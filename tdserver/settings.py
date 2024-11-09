@@ -95,10 +95,14 @@ WSGI_APPLICATION = 'tdserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('django.db.backends.mysql'),
-        'NAME': os.environ.get('todoist'),
-        'USER': os.environ.get('root'),
-        'PASSWORD': os.environ.get('DB_PASS','default'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get("DB_NAME", 'default_db'),
+        'USER': os.environ.get("DB_USER", 'root'),
+        'PASSWORD': os.environ.get('DB_PASS','default_password'),
+        'HOST': os.environ.get("DB_HOST", 'localhost'),
+        'PORT': os.environ.get("DB_PORT", 3306),
+
+
     }
 }
 
