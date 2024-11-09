@@ -73,7 +73,15 @@ class UserRegistrationView(generics.CreateAPIView):
 
 
     def create(self, request, *args, **kwargs):
+        print("Received Data: " , request.data)
         serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            print("Validation errors:", serializer.errors)
+            return Response(
+                {"error": serializer.errors},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -90,12 +98,22 @@ class SignInView(APIView):
         username = request.data.get('username')
         password = request.data.get('password')
 
+        #Validate inputs
+        errors = {}
+        if not username:
+            errors['username'] = 'Username is required'
+        if not password:
+            errors['password'] = 'Password is required'
+
+        if errors:
+            return Response({'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
+
         # Authenticate user
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            # Login the user
-            login(request, user)
-            return Response({"message": "Login successful", "username": user.username}, status=status.HTTP_200_OK)
-        else:
-            return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+        if user is None:
+            return Response({"error:": "Invalid username or password"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        #login the user
+        login(request, user)
+        return Response({"message": "You are now logged in"}, status=status.HTTP_200_OK)

@@ -1,0 +1,144 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  /* Adds space between elements */
+
+
+    
+}
+.register-page-main-container{
+    display: flex;
+    width: 100%;
+    column-gap: 5%;
+
+}
+.video-example-container{
+    width: 60%;
+    position: relative;
+}
+.register-container{
+    /* background-color: black; */
+    display: inline-block;
+    width: 50%;
+    justify-content: space-between; 
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px 0px 0px;
+
+    
+}
+.sign-up-text{
+    color:black;
+}
+.form-div {
+    width: 100%;
+
+    margin: 5% 0 0 0;
+}
+
+.divider{
+    width: 95%;
+    border: 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+#username-div,#password-div{
+    position:relative;
+    
+}
+.label-username,
+.label-password{
+    position:absolute;
+    font-size: 10px;
+    top: 8px;
+    left: 11px;
+    color:black;
+}
+
+.password-toggle{
+    position:absolute;
+    background: none;
+    top: 17px;
+    right: -10px;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+.password-toggle:hover{
+    background: none;
+}
+
+.password-toggle:focus{
+    outline: none;
+    border: none;
+}
+
+
+.register-username,
+.register-password{
+    background: none;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    width: 100%;
+    position: relative;
+    padding: 30px 10px 10px 10px; /* Changed padding to be more specific */
+    box-sizing: border-box; /* This is the key addition */
+    font-size: 100%;
+
+
+
+
+}
+.register-submit{
+   width: 100%;
+    padding: 15px 20px 15px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 110%;
+    background: rgb(228, 66, 50);
+    transition: 0.15s background-color;
+}
+
+.register-submit:hover{
+    background-color: #c3392c;
+}
+.text-login-redirect-div{
+    width: 100%;
+    color: black;
+    margin: 5% 0 0 0;
+    text-align: center;
+    font-size: 12px;
+}
+.anchor-text-login{
+    color: #666666;
+}
+
+.sticky-note-div {
+    position: absolute;
+    width: 280px;
+    /* Add these positioning properties */
+    top: 350px;
+    right: -75px;
+    /* Add some styling to make it visible */
+    background-color: #fff; /* or any color you prefer */
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, .15);
+}
+
+/* Style the paragraphs inside */
+.confession-para {
+    color: #282f30;
+    font-family: Caecilia LT Std, serif;
+    font-size: 20px;
+
+    font-weight: 400;
+    letter-spacing: -.02em;
+    line-height: 31px;
+    text-align: left;
+
+}
+
+.confession-user-para {
+    color: #666;
+
+}

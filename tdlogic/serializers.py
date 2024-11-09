@@ -25,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=120)
     password = serializers.CharField(write_only=True)
 
     class Meta:
