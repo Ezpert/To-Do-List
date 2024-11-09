@@ -4,6 +4,7 @@ import './Register.css'
 import PropTypes from "prop-types";
 import eyeOpen from './assets/eyeopen.svg';
 import eyeClosed from './assets/eyeclosed.svg';
+import Header from './Header';
 
 // Changed to functional component
 function Register(props) {
@@ -37,51 +38,53 @@ function Register(props) {
     };
 
     return (
-        <>
+        <div className='register-container '>
 
             {postResponse && (
                 <p>POST Response: {JSON.stringify(postResponse)}</p>
             )}
-            <h2>Sign Up</h2>
+            
+            <Header/>
+            <div className='form-div'>
+                <form onSubmit={handleFormSubmit} className="registration-form">
+                    <div id="username-div">
+                        <label className="label-username">Email</label>
+                        <input
+                            className = "register-username"
+                            type="text"
+                            placeholder="Enter your username..."
+                            value={postFormData.username || ''}
+                            onChange={(e) => updateData({username: e.target.value})}
+                        />
 
-            <form onSubmit={handleFormSubmit} className="registration-form">
-                <div id="username-div">
-                    <label className="label-username">Email</label>
-                    <input
-                        className = "register-username"
-                        type="text"
-                        placeholder="Enter your username..."
-                        value={postFormData.username || ''}
-                        onChange={(e) => updateData({username: e.target.value})}
-                    />
+                    </div>
 
-                </div>
+                    <div id="password-div">
+                        <label className="label-password">Password</label>
+                        <input
+                            className = "register-password"
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password..."
+                            value={postFormData.password || ''}
+                            onChange={(e) => updateData({password: e.target.value})}
+                        />
 
-                <div id="password-div">
-                    <label className="label-password">Password</label>
-                    <input
-                        className = "register-password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password..."
-                        value={postFormData.password || ''}
-                        onChange={(e) => updateData({password: e.target.value})}
-                    />
+                        <button
+                            type="button"
+                            className="password-toggle"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <img src={eyeOpen} alt="Todoist Icon"/> :
+                                            <img src={eyeClosed} alt="Todoist Icon"/>}
+                        </button>
 
-                    <button
-                        type="button"
-                        className="password-toggle"
-                        onClick={() => setShowPassword(!showPassword)}
-                    >
-                        {showPassword ? <img src={eyeOpen} alt="Todoist Icon"/> :
-                                         <img src={eyeClosed} alt="Todoist Icon"/>}
-                    </button>
-
-                </div>
+                    </div>
 
 
-                <button className="register-submit"type="submit">Submit</button>
+                    <button className="register-submit"type="submit">Submit</button>
             </form>
-        </>
+            </div>
+        </div>
     );
 }
 
