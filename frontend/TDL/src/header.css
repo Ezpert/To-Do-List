@@ -4,7 +4,7 @@
     margin-left: 5rem;
     margin-right: 42rem;
     text-align: center;
-    background-color: black;
+
 }
 .head {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -16,35 +16,42 @@
     display: flex;/* Make the container a flex container */
     flex-direction: column;/* Arrange children in a horizontal row */
     gap: 15px;
-    margin-top: 0%;
-    margin-left: 0%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     text-align: center;
     color: black;
-    margin-bottom: 1rem;
+
     width: 100%;
-    background-color: rgb(45, 55, 72);
+
     
     .p-2{
         border-radius: 10px;
-        padding: 20px 20px 20px 20px;
+        padding: 13px 20px 13px 20px;
         margin: .2px;
+        font-weight: 700;
+        color: black;
+        font-size: 1.1em;
+        background: none;
+        border: 1px solid #eee;
+        transition: 0.15s background-color;
+
+
     }
     .p-2:hover {
-        background-color: rgb(104, 112, 125);
-        /* transform: scale(1.05); */
-        /* border-style: solid; */
-        /* box-shadow: 0 4px 10px rgb(104, 112, 125); Add shadow on hover */
-        /* color: black; Change text color on hover */
+        background-color: #f5f5f5;
     }
-    .p-2 svg {
-        width: 20px;  /* Set icon size */
-        height: 20px;
-        margin-right: 10px;  /* Space between the icon and text */
-        vertical-align: middle;  /* Ensures the icon aligns well with the text */
-    }
+
+
     
     /* Optional: Adjust the position of the icon more precisely */
     .p-2 svg {
         margin-top: -5px; /* Adjust this value to move the icon slightly up or down */
     }
+
 }
+.faang-svg{
+        width: 20px;  /* Set icon size */
+        height: 20px;
+        margin-right: 10px;  /* Space between the icon and text */
+        vertical-align: middle;  /* Ensures the icon aligns well with the text */
+    }
