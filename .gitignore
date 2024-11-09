@@ -1,1 +1,63 @@
-/.env
+# Dependencies
+/frontend/node_modules
+/node_modules
+/.pnp
+.pnp.js
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache and Build files
+/frontend/.cache
+/build
+/dist
+*.pyc
+__pycache__/
+.eslintcache
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python specific
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+
+# Django specific
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/static
+*.pot
+*.mo
+
+# Keep these files
+!package.json
+!package-lock.json
+!**/migrations/__init__.py
+
+# Ignore all migrations except __init__.py
+**/migrations/*
+!**/migrations/__init__.py
