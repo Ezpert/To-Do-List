@@ -73,7 +73,15 @@ class UserRegistrationView(generics.CreateAPIView):
 
 
     def create(self, request, *args, **kwargs):
+        print("Received Data: " , request.data)
         serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            print("Validation errors:", serializer.errors)
+            return Response(
+                {"error": serializer.errors},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -89,6 +97,16 @@ class SignInView(APIView):
         # Extract username and password from request data
         username = request.data.get('username')
         password = request.data.get('password')
+
+        #Validate inputs
+        errors = {}
+        if not username:
+            errors['username'] = 'Username is required'
+        if not password:
+            errors['password'] = 'Password is required'
+
+        if errors:
+            return Response({'errors': errors}, status=status.HTTP_400_BAD_REQUEST)
 
         # Authenticate user
         user = authenticate(request, username=username, password=password)
